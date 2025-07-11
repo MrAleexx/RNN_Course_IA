@@ -1,0 +1,33 @@
+numpy==1.23.5               
+protobuf==3.19.6           
+tensorflow==2.11.0          
+keras==2.11.0             
+
+# Paquetes que dependen de NumPy (instalarlos después)
+pandas==1.5.3
+scikit-learn==1.2.0
+numba==0.60.0
+
+# Visualización
+plotly==5.11.0
+matplotlib==3.6.3
+seaborn==0.12.2
+altair==4.2.2              
+vega_datasets==0.9.0       
+
+# ML/Optimización
+mlflow==2.1.1
+optuna==3.1.0
+keras-tuner==1.3.0
+scipy==1.10.1
+
+# Utilidades
+pyyaml==6.0
+streamlit==1.17.0
+python-dotenv==0.21.0
+statsmodels==0.13.5
+tqdm==4.64.1
+holidays==0.21
+python-dateutil==2.8.2
+joblib==1.2.0
+dask==2023.1.0

@@ -1,0 +1,29 @@
+# Configuración general
+random_seed: 42
+experiment_name: "demand_forecasting"
+model_name: "demand_lstm_model"
+scaler_name: "demand_scaler"
+mlflow_uri: "http://localhost:5000"
+
+# Rutas de datos
+data_path: "data/processed/sales_data.csv"
+
+# Configuración de datos sintéticos
+synthetic_data:
+  start_date: "2022-11-01"
+  n_days: 1000
+  store_ids: [1, 2, 3]
+  product_ids: [101, 102, 103]
+
+# Configuración del modelo
+target_column: "sales"
+sequence_length: 30
+test_size: 0.1
+n_splits: 3
+
+# Hiperparámetros
+learning_rate: 0.001
+clipnorm: 1.0
+epochs: 25
+batch_size: 64
+patience: 5
