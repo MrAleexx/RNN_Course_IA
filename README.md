@@ -3,10 +3,9 @@
 Proyecto de predicción de demanda utilizando series temporales con modelos LSTM en TensorFlow. Incluye generación de datos sintéticos, entrenamiento con validación cruzada, y aplicación web interactiva con Streamlit para visualizar pronósticos y evaluación del modelo.
 
 ---
-
+```
 ## Estructura del Proyecto
 
-```text
 PROJECT_V2/
 ├── data/
 │   ├── processed/
@@ -31,7 +30,7 @@ PROJECT_V2/
 ├── config.yaml                     # Configuraciones generales
 ├── requirements.txt                # Dependencias del proyecto
 └── README.md                       # Este archivo
-´´´
+```
 
 ## Requisitos
 
