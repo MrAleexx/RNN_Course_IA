@@ -19,7 +19,7 @@ def create_synthetic_data(cfg: dict) -> pd.DataFrame:
     promos = np.random.choice([0, 1], size=len(dates), p=[0.9, 0.1])
     promo_effect = promos * np.random.normal(50, 10, len(dates))
 
-    df = pd.DataFrame(
+    return pd.DataFrame(
         {
             "date": dates,
             "store_id": np.random.choice(cfg["store_ids"], len(dates)),
@@ -31,8 +31,6 @@ def create_synthetic_data(cfg: dict) -> pd.DataFrame:
             "month": dates.month,
         }
     )
-    return df
-
 
 # ───────────────────────────────────────────
 # 2. Carga (o genera) los datos

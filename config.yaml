@@ -1,3 +1,5 @@
+#config.yaml
+
 # Configuración general
 random_seed: 42
 experiment_name: "demand_forecasting"
@@ -10,7 +12,7 @@ data_path: "data/processed/sales_data.csv"
 
 # Configuración de datos sintéticos
 synthetic_data:
-  start_date: "2022-11-01"
+  start_date: "2022-10-11"
   n_days: 1000
   store_ids: [1, 2, 3]
   product_ids: [101, 102, 103]
@@ -24,6 +26,6 @@ n_splits: 3
 # Hiperparámetros
 learning_rate: 0.001
 clipnorm: 1.0
-epochs: 25
+epochs: 30
 batch_size: 64
 patience: 5

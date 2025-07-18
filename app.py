@@ -1,5 +1,6 @@
 # app.py
-
+import os
+from datetime import datetime
 import streamlit as st
 import yaml
 import pandas as pd
@@ -29,7 +30,7 @@ st.set_page_config(page_title="Sistema de Pronóstico de Demanda",
 # ───────────────────────────────────────────
 # Carga de modelo y scaler
 # ───────────────────────────────────────────
-@st.cache_resourcen
+@st.experimental_singleton
 def load_model_artifacts():
     try:
         model = mlflow.keras.load_model(
@@ -52,7 +53,7 @@ def load_model_artifacts():
 # App principal
 # ───────────────────────────────────────────
 def main():
-    st.title("📊 Sistema Avanzado de Pronóstico de Demanda")
+    st.title("📊 Sistema Pronóstico de Demanda")
 
     # Datos y modelo
     df = load_data(config["data_path"], config["synthetic_data"])
@@ -99,7 +100,20 @@ def main():
             ci=ci,
         )
 
-
+        # En la función main(), modifica la sección del botón:
+        if st.button("💾 Guardar pronóstico"):
+            output_path = save_forecast(forecast, df_hist, config["target_column"])
+            st.success(f"Pronóstico guardado en: {output_path}")
+            
+            # Opción para descargar directamente
+            with open(output_path, "rb") as f:
+                st.download_button(
+                    label="⬇️ Descargar CSV",
+                    data=f,
+                    file_name=f"pronostico_{datetime.now().strftime('%Y%m%d')}.csv",
+                    mime="text/csv"
+                )
+    
     except Exception as e:
         st.exception(e)     # muestra la traza completa
         st.stop()
@@ -169,6 +183,46 @@ def main():
                                 metrics["y_pred"], metrics["dates"]),
                 use_container_width=True,
             )
+
+def save_forecast(forecast: dict, historical_data: pd.DataFrame, target_col: str) -> str:
+    """
+    Guarda el pronóstico en una carpeta con timestamp.
+    Devuelve la ruta al archivo guardado.
+    """
+    forecasts_dir = Path("forecasts")
+    forecasts_dir.mkdir(exist_ok=True)
+    
+    # Nombre de carpeta con timestamp válido para Windows
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    forecast_dir = forecasts_dir / f"{timestamp}_forecast"
+    forecast_dir.mkdir()
+    
+    # Generar el DataFrame (igual que antes)
+    forecast_df = pd.DataFrame({
+        "Fecha": forecast["dates"],
+        "Pronóstico": forecast["mean"],
+        "Límite_Inferior": forecast["lower"],
+        "Límite_Superior": forecast["upper"],
+        "Tipo": "Pronóstico"
+    })
+    
+    historical_df = historical_data[["date", target_col]].copy()
+    historical_df.columns = ["Fecha", "Pronóstico"]
+    historical_df["Límite_Inferior"] = None
+    historical_df["Límite_Superior"] = None
+    historical_df["Tipo"] = "Histórico"
+    
+    full_df = pd.concat([historical_df, forecast_df])
+    
+    # Guardar en la carpeta con timestamp
+    timestamped_path = forecast_dir / "forecast.csv"
+    full_df.to_csv(timestamped_path, index=False)
+    
+    # Guardar también como "latest" (alternativa para Windows)
+    latest_path = forecasts_dir / "latest_forecast.csv"
+    full_df.to_csv(latest_path, index=False)
+    
+    return str(timestamped_path)
 
 
 if __name__ == "__main__":

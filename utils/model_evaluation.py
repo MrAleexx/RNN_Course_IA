@@ -103,7 +103,7 @@ def backtest_model(model, scaler, series, seq_len: int, horizon: int = 7):
 
     preds = np.array(preds)
 
-    metrics = {
+    return {
         "mae": np.mean([mean_absolute_error(y[i], preds[i]) for i in range(len(y))]),
         "rmse": np.mean([np.sqrt(mean_squared_error(y[i], preds[i])) for i in range(len(y))]),
         "mape": np.mean([np.mean(np.abs((y[i] - preds[i]) / y[i])) * 100 for i in range(len(y))]),
@@ -112,4 +112,4 @@ def backtest_model(model, scaler, series, seq_len: int, horizon: int = 7):
         "y_pred": preds[-1],
         "dates": pd.date_range(periods=horizon, end=pd.Timestamp.today()),
     }
-    return metrics
+

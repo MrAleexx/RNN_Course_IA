@@ -42,34 +42,37 @@ PROJECT_V2/
 
 ## Instalación
 
-1. Clonar el repositorio:
+### 1. Clonar el repositorio:
 
 git clone <URL-del-repositorio>
 cd PROJECT_V2
 
-2. Crear y activar entorno virtual:
+### 2. Crear y activar entorno virtual
 
 python -m venv venv
 
-# Windows
+#### Windows
 
 venv\Scripts\activate
 
-# Linux/macOS
+#### Linux/macOS
 
 source venv/bin/activate
 
-3. Instalar dependencias:
+### 3. Instalar dependencias:
+
 pip install -r requirements.txt
 
-Uso
+## Uso
 
-2. Entrenar modelo
+### 2. Entrenar modelo
+
 Ejecutar el script de entrenamiento que realiza validación cruzada y guarda modelos:
 
 python train.py
 
-3. Ejecutar aplicación Streamlit
-Lanzar la app web para visualizar pronósticos interactivos:
+### 3. Ejecutar aplicación Streamlit
+
+mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns
 
 streamlit run app.py

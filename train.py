@@ -32,7 +32,7 @@ mlflow.set_experiment(config['experiment_name'])
 
 
 def build_model(input_shape):
-    """Construye modelo LSTM mejorado"""
+    """ Modelo LSTM """
     model = Sequential([
         Bidirectional(LSTM(128, return_sequences=True,
                         kernel_regularizer=l2(0.01)),
