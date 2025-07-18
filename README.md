@@ -3,9 +3,9 @@
 Proyecto de predicción de demanda utilizando series temporales con modelos LSTM en TensorFlow. Incluye generación de datos sintéticos, entrenamiento con validación cruzada, y aplicación web interactiva con Streamlit para visualizar pronósticos y evaluación del modelo.
 
 ---
-```
-## Estructura del Proyecto
 
+## Estructura del Proyecto
+```
 PROJECT_V2/
 ├── data/
 │   ├── processed/
@@ -42,7 +42,7 @@ PROJECT_V2/
 
 ## Instalación
 
-### 1. Clonar el repositorio:
+### 1. Clonar el repositorio
 
 git clone https://github.com/MrAleexx/RNN_Course_IA
 
