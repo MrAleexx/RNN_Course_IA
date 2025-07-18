@@ -44,8 +44,7 @@ PROJECT_V2/
 
 ### 1. Clonar el repositorio:
 
-git clone <URL-del-repositorio>
-cd PROJECT_V2
+git clone https://github.com/MrAleexx/RNN_Course_IA
 
 ### 2. Crear y activar entorno virtual
 
