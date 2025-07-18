@@ -6,31 +6,32 @@ Proyecto de predicción de demanda utilizando series temporales con modelos LSTM
 
 ## Estructura del Proyecto
 
+```text
 PROJECT_V2/
 ├── data/
-│ ├── processed/
-│ │ └── sales_data.csv # Datos de ventas procesados
-│ └── raw/
-├── logs/ # Logs de entrenamiento
-├── mlruns/ # Artefactos de MLflow
+│   ├── processed/
+│   │   └── sales_data.csv          # Datos de ventas procesados
+│   └── raw/                        # Datos crudos (fuente)
+├── logs/                           # Registros de entrenamiento
+├── mlruns/                         # Artefactos de MLflow
 ├── models/
-│ ├── v1/
-│ │ ├── final_model.keras # Modelo entrenado final
-│ │ ├── fold_0.keras
-│ │ ├── fold_1.keras
-│ │ ├── fold_2.keras
-│ │ ├── fold_3.keras
-│ │ ├── fold_4.keras
-│ │ └── scaler.pkl # Scaler para estandarización
-│ └── v2/
+│   ├── v1/
+│   │   ├── final_model.keras       # Modelo entrenado final
+│   │   ├── fold_0.keras
+│   │   ├── fold_1.keras
+│   │   ├── fold_2.keras
+│   │   ├── fold_3.keras
+│   │   └── fold_4.keras
+│   └── scaler.pkl                  # Scaler para estandarización
 ├── utils/
-│ ├── data_processing.py # Generación y preparación de datos
-│ └── model_evaluation.py # Funciones de evaluación y visualización
-├── app.py # Aplicación Streamlit
-├── train.py # Script de entrenamiento
-├── config.yaml # Configuraciones generales
-├── requirements.txt # Dependencias del proyecto
-└── README.md # Este archivo
+│   ├── data_processing.py          # Generación y preparación de datos
+│   └── model_evaluation.py         # Evaluación y visualización
+├── app.py                          # Aplicación Streamlit
+├── train.py                        # Script de entrenamiento
+├── config.yaml                     # Configuraciones generales
+├── requirements.txt                # Dependencias del proyecto
+└── README.md                       # Este archivo
+
 
 ## Requisitos
 
