@@ -31,7 +31,7 @@ PROJECT_V2/
 ├── config.yaml                     # Configuraciones generales
 ├── requirements.txt                # Dependencias del proyecto
 └── README.md                       # Este archivo
-
+´´´
 
 ## Requisitos
 
